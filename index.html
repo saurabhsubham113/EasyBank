@@ -55,38 +55,39 @@
             </nav>
 
             <button class="btn btn__primary">Request Invite</button>
-            <div class="overlay">
-              <div class="hamburger">
-                <img src="images/icon-hamburger.svg" alt="hamburger" />
+            <div class="hamburger__wrapper">
+              <div class="hamburger show" id="burgerOpen">
+                <img src="images/icon-hamburger.svg" alt="hamburger Open" />
+              </div>
+              <div class="hamburger" id="burgerClose">
+                <img src="images/icon-close.svg" alt="hamburger close" />
               </div>
             </div>
+            <div id="overlay"></div>
+            <aside class="modal" id="modal">
+              <div class="mobile__nav" id="mobileNav">
+                <ul>
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">About</a>
+                  </li>
+                  <li>
+                    <a href="#">Contact</a>
+                  </li>
+                  <li>
+                    <a href="#">Blog</a>
+                  </li>
+                  <li>
+                    <a href="#">Careers</a>
+                  </li>
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </header>
-
-      <!-- <aside class="overlay" id="overlay">
-        <div class="container">
-          <div class="mobile__nav" id="mobileNav">
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
-              <li>
-                <a href="#">Blog</a>
-              </li>
-              <li>
-                <a href="#">Careers</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </aside> -->
 
       <section class="section hero">
         <div class="hero__inner">

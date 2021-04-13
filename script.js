@@ -1,46 +1,45 @@
-const header = document.querySelector('header')
-const burger = document.getElementById('burger');
-const line = document.getElementById('line');
+
+const burgerOpen = document.getElementById('burgerOpen');
+const burgerClose = document.getElementById('burgerClose');
+const modal = document.getElementById('modal');
 const overlay = document.getElementById('overlay');
-const mobileNav = document.getElementById('mobileNav');
-let isOpen = false;
 
-const addClasses = () => {
-  line.classList.add('active')
-  overlay.classList.add('is-modalOpen')
-  mobileNav.classList.add('is-mobileOpen')
-  document.body.style.overflow = 'hidden'
-  isOpen = true
+function disableScroll() {
+    // Get the current page scroll position
+    scrollTop = document.documentElement.scrollTop;
+    scrollLeft = document.documentElement.scrollLeft,
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function () {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
 }
 
-const removeClasses = () => {
-  line.classList.remove('active')
-  overlay.classList.remove('is-modalOpen')
-  mobileNav.classList.remove('is-mobileOpen')
-  document.body.style.overflow = 'initial'
-  isOpen = false
+function openingModal() {
+    burgerOpen.classList.remove("show")
+    burgerClose.classList.add("show")
+    modal.classList.add("active")
+    overlay.classList.add("active")
+    disableScroll()
 }
 
-const toggleMobileNav = (e) => {
-  if (!isOpen) {
-    addClasses()
-  } else {
-    removeClasses()
-  }
+function closingModal() {
+    burgerClose.classList.remove("show")
+    burgerOpen.classList.add("show")
+    modal.classList.remove("active")
+    overlay.classList.remove("active")
+    //activating scroll function
+    window.onscroll = function () { };
 }
 
-const handleToggleResize = () => {
-  if (window.innerWidth < 800 && isOpen) {
-    removeClasses()
-  }
-}
 
-burger.addEventListener('click', toggleMobileNav)
+burgerOpen.addEventListener("click", openingModal)
 
-overlay.addEventListener('click', (e) => {
-  if (!e.target.contains(overlay)) return
-  document.body.style.overflow = 'hidden'
-  toggleMobileNav()
-})
+burgerClose.addEventListener("click", closingModal)
 
-window.addEventListener('resize', handleToggleResize)
+overlay.addEventListener("click", closingModal)
+
+//removing event listener
+// burgerOpen.removeEventListener("click", openingModal)
+// burgerClose.removeEventListener("click", closingModal)
+// overlay.removeEventListener("click", closingModal)
